@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>HTMX Demo</title>
+  </head>
+  <body class="bg-blue-900">
+    <form class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+      <h1 class="text-2xl font-bold mb-4 text-center">Contact Us</h1>
+      <div
+        class="mb-4"
+        hx-target="this"
+        hx-swap="outerHTML"
+      >
+        <!-- hx-target="this" means that this element itself is the target -->
+        <!-- hx-swap="outerHTML" means that the response from the server will replace the form element (this div) itself. -->
+        <label
+          for="email"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          hx-post="/contact/email"
+          class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:border-blue-500"
+          required
+        />
+        <!-- hx-post="/contact/email" is the htmx attribute that tells htmx to send a POST request to the /contact/email endpoint when the input loses focus. -->
+        <!-- it is for email validation -->
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="firstName"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >First Name</label
+        >
+        <input
+          type="firstName"
+          id="firstName"
+          name="firstName"
+          class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:border-blue-500"
+          required
+        />
+      </div>
+
+      <div class="mb-4">
+        <label
+          for="lastName"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >Last Name</label
+        >
+        <input
+          type="lastName"
+          id="lastName"
+          name="lastName"
+          class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:border-blue-500"
+          required
+        />
+      </div>
+    </form>
+  </body>
+</html>

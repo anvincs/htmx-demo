@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>HTMX Demo</title>
+  </head>
+  <body>
+    <div class="text-center">
+      <h1 class="text-2xl font-bold my-5">Simple Request Example</h1>
+
+      <!-- hx-get is a htmx attribute that makes a GET request to the specified URL -->
+      <!-- eg: hx-get="https://jsonplaceholder.typicode.com/users" -->
+
+      <!-- hx-trigger is a htmx attribute that specifies the event that triggers the request eg: hx-trigger="mouseover" -->
+
+      <!-- hx-swap is a htmx attribute that specifies the element to swap with the response -->
+      <!-- hx-swap="outerHTML" will replace the entire element with the response -->
+
+      <!-- hx-get="/users" will make a GET request to localhost:PORT/users (local server) -->
+
+      <!-- hx-target is a htmx attribute that specifies the element to swap with the response -->
+      <!-- hx-target="#users" will replace the element with id="users" (the div below the button) with the response -->
+
+      <!-- hx-confirm is a htmx attribute that specifies the confirmation message before making the request -->
+      <!-- eg: hx-confirm="Are you sure you want to fetch users?" -->
+
+      <!-- hx-indicator is a htmx attribute that specifies the element to show while the request is being made (like loading spinner) -->
+      <!-- hx-indicator="#loading" will show the element with id="loading" (the span below the button) while the request is being made. The element (here span) should have the class 'htmx-indicator' -->
+
+      <!-- hx-vals is a htmx attribute that specifies the values to send with the request (like form data) eg: hx-vals='{"limit": 5}' -->
+      <!-- // This can be recieved at the server side in the same way we extract query parameters(URL parameters) (using req.body.limit in case of express) -->
+      <button
+        hx-get="/users"
+        hx-target="#users"
+        hx-indicator="#loading"
+        hx-vals='{"limit": 5}'
+        class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg"
+      >
+        Fetch Users
+      </button>
+      <!-- this button will make a GET request to the specified URL when we click on it -->
+
+      <span
+        class="htmx-indicator"
+        id="loading"
+      >
+        <img
+          src="img/loader.gif"
+          alt="Loading..."
+          class="m-auto h-10"
+      /></span>
+
+      <div id="users"></div>
+    </div>
+  </body>
+</html>
